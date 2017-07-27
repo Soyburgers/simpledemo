@@ -1,0 +1,168 @@
+$blue-200: rgba(122, 160, 185, 1);
+$blue-500: rgba(60, 80, 92, 1);
+$blue-700: darken($blue-500, 2%);
+$gray-500: rgba(118, 121 ,122, 1);
+$white: rgba(255, 255, 255,1);
+
+$mobile: 767px;
+$tablet: 1200px;
+
+*{
+	box-sizing: border-box;
+}
+
+//For a real production site I would include reset.css
+body,
+ul,
+li,
+p,
+h1,
+h2,
+h3 {
+	margin: 0;
+	padding: 0;
+}
+
+body{
+ font-family: serif;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+.site-header {
+	font-family: Helvetica, Arial, sans-serif;
+	min-height: 122px;
+	padding: 20px;
+
+	*{
+		/*
+			I scaffolded out some header HTML but it was distracting.
+			Im hiding it as to not distract from the point of the exercise.
+		*/
+		display: none;
+	}
+}
+
+.main-nav__item {
+	display: inline-block;
+	margin-right: 10px;
+	text-transform: uppercase;
+}
+
+.main-nav__link,
+.social__link,
+.panel__link {
+	color: $gray-500;
+	text-decoration: none;
+
+	&:hover {
+		color: lighten($gray-500, 10%);
+	}
+}
+
+.section {
+	padding: 20px;
+
+	&.section--dark{
+		background: $blue-500;
+		color: $gray-500;
+	}
+
+	 &.section--light{
+		background: $white;
+		color: $blue-200;
+	}
+}
+
+.hero {
+	background-color: $blue-700;
+	min-height: 500px;
+}
+
+.cta-wrapper{
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	max-width: 1160px;
+	padding: 100px 0;
+	@media (max-width: $mobile) {
+		display: block;
+	}
+}
+
+.cta-item {
+	display: inline-block;
+	font-size: 16px;
+	/*
+		the 20px in the calc() comes from the 30px gutter. 30px*2/3 = 20.
+		This is fine for pixel-pefect designs but possibly a little clunky.
+		If the designs are flexible I would prefer to set the width to something like 32% or 31%
+		so the gutter is dynamic.
+	*/
+	vertical-align: top;
+	width: calc(33.33% - 20px);
+
+	@media (max-width: $mobile){
+		width: 100%;
+		margin-right: 0;
+		margin-bottom: 20px;
+	}
+}
+
+.cta-item__header {
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-bottom: 24px;
+}
+
+.cta-item__image {
+	//Vendor prefixs should be handled by a gulp plugin in a true production site.
+	cursor: -webkit-grab;
+	cursor: grab;
+	height: auto;
+	margin-bottom: 24px;
+	width: 100%;
+
+	&:active {
+		cursor: -webkit-grabbing;
+		cursor: grabbing;
+	}
+}
+
+.cta-item__body {
+	line-height: 1.6em;
+	margin-bottom: 24px;
+}
+
+.cta-item__link {
+	border: 2px solid $blue-200;
+	border-radius: 50px;
+	color: $blue-200;
+	display: inline-block;
+	font-weight: bold;
+	letter-spacing: 0.03em;
+	padding: 8px 15px;
+	text-decoration: none;
+
+	&:hover {
+		background-color: $blue-200;
+		border-color: $blue-200;
+		color: $white;
+	}
+}
+
+/*
+	Block styles to hold the layout. Total Nonsense, not for prod.
+*/
+
+.fake-content {
+	min-height: 500px;
+}
+
+.fake-footer {
+	background-color: $blue-700;
+	min-height: 400px;
+}

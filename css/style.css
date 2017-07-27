@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box; }
+
+body,
+ul,
+li,
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: serif; }
+
+ul,
+li {
+  list-style: none; }
+
+.site-header {
+  font-family: Helvetica, Arial, sans-serif;
+  min-height: 122px;
+  padding: 20px; }
+  .site-header * {
+    /*
+			I scaffolded out some header HTML but it was distracting.
+			Im hiding it as to not distract from the point of the exercise.
+		*/
+    display: none; }
+
+.main-nav__item {
+  display: inline-block;
+  margin-right: 10px;
+  text-transform: uppercase; }
+
+.main-nav__link,
+.social__link,
+.panel__link {
+  color: #76797a;
+  text-decoration: none; }
+  .main-nav__link:hover,
+  .social__link:hover,
+  .panel__link:hover {
+    color: #909293; }
+
+.section {
+  padding: 20px; }
+  .section.section--dark {
+    background: #3c505c;
+    color: #76797a; }
+  .section.section--light {
+    background: white;
+    color: #7aa0b9; }
+
+.hero {
+  background-color: #384b56;
+  min-height: 500px; }
+
+.cta-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1160px;
+  padding: 100px 0; }
+  @media (max-width: 767px) {
+    .cta-wrapper {
+      display: block; } }
+
+.cta-item {
+  display: inline-block;
+  font-size: 16px;
+  /*
+		the 20px in the calc() comes from the 30px gutter. 30px*2/3 = 20.
+		This is fine for pixel-pefect designs but possibly a little clunky.
+		If the designs are flexible I would prefer to set the width to something like 32% or 31%
+		so the gutter is dynamic.
+	*/
+  vertical-align: top;
+  width: calc(33.33% - 20px); }
+  @media (max-width: 767px) {
+    .cta-item {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 20px; } }
+
+.cta-item__header {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 24px; }
+
+.cta-item__image {
+  cursor: -webkit-grab;
+  cursor: grab;
+  height: auto;
+  margin-bottom: 24px;
+  width: 100%; }
+  .cta-item__image:active {
+    cursor: -webkit-grabbing;
+    cursor: grabbing; }
+
+.cta-item__body {
+  line-height: 1.6em;
+  margin-bottom: 24px; }
+
+.cta-item__link {
+  border: 2px solid #7aa0b9;
+  border-radius: 50px;
+  color: #7aa0b9;
+  display: inline-block;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  padding: 8px 15px;
+  text-decoration: none; }
+  .cta-item__link:hover {
+    background-color: #7aa0b9;
+    border-color: #7aa0b9;
+    color: white; }
+
+/*
+	Block styles to hold the layout. Total Nonsense, not for prod.
+*/
+.fake-content {
+  min-height: 500px; }
+
+.fake-footer {
+  background-color: #384b56;
+  min-height: 400px; }
