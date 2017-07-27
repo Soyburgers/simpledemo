@@ -27,11 +27,11 @@ function bindImageSwapper(){
 	};
 
 	/*
-		on mousedown store a reference to the image that was clicked.
-		on mouseup store a reference to the image that was relieved.
+		on dragstart or touchstart store a reference to the image that was clicked.
+		on touchend or drop store a reference to the image that was relieved.
 	*/
 	$(".js-image-container")
-		.on("mousedown touchstart", ".is-swappable", function(e){
+		.on("dragstart touchstart", ".is-swappable", function(e){
 			/*
 				I originally added a prevent default to the event,
 				but after playing with it I prefer the UX of being able to see the image as it's dragged.
@@ -40,12 +40,17 @@ function bindImageSwapper(){
 		 	//e.preventDefault();
 			$startImage = $(this);
 		})
-		.on("mouseup", ".is-swappable", function(e){
-
+		.on("drop", ".is-swappable", function(e){
 			e.preventDefault();
+		  e.stopPropagation();
+
 			$endImage = $(this);
 			//Verify there is a start image and invoke the swapImage function if so.
 			$startImage && swapImage($startImage, $endImage);
+		})
+		.on('dragenter dragover',function(e){
+				//Per a stackoverflow answer I learned I need to prevent these events to get a drop event to fire
+				e.preventDefault();
 		})
 		.on("touchend", ".is-swappable", function(e){
 			//touch events need to be handled seperately.
@@ -61,8 +66,8 @@ function bindImageSwapper(){
 			if ($endImage.hasClass("is-swappable") && $startImage){
 				swapImage($startImage, $endImage);
 			}
-
 		});
+
 	/*
 		This functionality is true to the spirit of the challenge,
 		but for actual production use - accounting for other attributes might be neccesary.
