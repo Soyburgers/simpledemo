@@ -5,21 +5,21 @@ function bindImageSwapper(){
 
 	//given two jquery objects. exchange the src and alt attribute of each.
 	function swapImage($first, $second){
-		//Retrieve src and alt of both images.
-		const startImageSrc = $first.attr("src");
-		const startImageAlt = $first.attr("alt");
-		const endImageSrc = $second.attr("src");
-		const endImageAlt = $second.attr("alt");
+
+		//Retrieve src and alt of both images and store them in an object.
+		const firstImageProps = {
+			src: $first.attr("src"),
+			alt: $first.attr("alt")
+		}
+
+		const secondImageProps = {
+			src: $second.attr("src"),
+			alt: $second.attr("alt")
+		}
 
 		//Assign the src to both img tags.
-		$endImage.attr({
-			src: startImageSrc,
-			alt: startImageAlt
-		});
-		$startImage.attr({
-			src: endImageSrc,
-			alt: endImageAlt
-		});
+		$endImage.attr(firstImageProps);
+		$startImage.attr(secondImageProps);
 
 		//clear the references to each variable.
 		$startImage = null;
