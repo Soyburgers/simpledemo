@@ -124,11 +124,20 @@ li {
 	cursor: grab;
 	height: auto;
 	margin-bottom: 24px;
+	transition: opacity .3s, outline .3s;
 	width: 100%;
 
 	&:active {
 		cursor: -webkit-grabbing;
 		cursor: grabbing;
+
+		.is-dragging & {
+			opacity: 1;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+		}
+	}
+	.is-dragging & {
+		opacity: 0.5;
 	}
 }
 

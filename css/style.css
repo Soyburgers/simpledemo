@@ -94,10 +94,16 @@ li {
   cursor: grab;
   height: auto;
   margin-bottom: 24px;
+  transition: opacity .3s, outline .3s;
   width: 100%; }
   .cta-item__image:active {
     cursor: -webkit-grabbing;
     cursor: grabbing; }
+    .is-dragging .cta-item__image:active {
+      opacity: 1;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.8); }
+  .is-dragging .cta-item__image {
+    opacity: 0.5; }
 
 .cta-item__body {
   line-height: 1.6em;

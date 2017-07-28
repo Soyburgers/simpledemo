@@ -39,6 +39,9 @@ function bindImageSwapper(){
 			*/
 		 	//e.preventDefault();
 			$startImage = $(this);
+
+			//Add a body class so we can add specific styles during the drag event.
+			$("body").addClass("is-dragging");
 		})
 		.on("drop", ".is-swappable", function(e){
 			e.preventDefault();
@@ -47,6 +50,9 @@ function bindImageSwapper(){
 			$endImage = $(this);
 			//Verify there is a start image and invoke the swapImage function if so.
 			$startImage && swapImage($startImage, $endImage);
+
+			//Remove the class that adds dragging styles.
+			$("body").removeClass("is-dragging");
 		})
 		.on('dragenter dragover',function(e){
 				//Per a stackoverflow answer I learned I need to prevent these events to get a drop event to fire
@@ -66,6 +72,9 @@ function bindImageSwapper(){
 			if ($endImage.hasClass("is-swappable") && $startImage){
 				swapImage($startImage, $endImage);
 			}
+
+			//Remove the class that adds dragging styles.
+			$("body").removeClass("is-dragging");
 		});
 
 	/*
