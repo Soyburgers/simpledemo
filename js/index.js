@@ -50,13 +50,14 @@ function bindImageSwapper(){
 			$endImage = $(this);
 			//Verify there is a start image and invoke the swapImage function if so.
 			$startImage && swapImage($startImage, $endImage);
-
-			//Remove the class that adds dragging styles.
-			$("body").removeClass("is-dragging");
 		})
 		.on('dragenter dragover',function(e){
 				//Per a stackoverflow answer I learned I need to prevent these events to get a drop event to fire
 				e.preventDefault();
+		})
+		.on("dragend", ".is-swappable", function(e){
+			//Remove the class that adds dragging styles.
+			$("body").removeClass("is-dragging");
 		})
 		.on("touchend", ".is-swappable", function(e){
 			//touch events need to be handled seperately.
